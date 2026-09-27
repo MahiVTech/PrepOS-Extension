@@ -1,70 +1,333 @@
-# MahiOS — Personal Learning Operating System
+# 🌸 MahiOS — Personal Learning Operating System
 
-A responsive learning dashboard for GATE 2027, Python, DSA, focus sessions, revision, tasks, projects, LeetCode stats, YouTube playlist lessons, and a Gemini-powered study assistant. Includes a Chrome New Tab extension.
+**Your personal space to learn, focus, track progress, and achieve your goals.**
 
-## Run locally
+MahiOS is a responsive, personalized learning dashboard designed to make studying more organized, productive, and enjoyable. It brings your learning goals, tasks, projects, revision, focus sessions, and AI-powered study assistance together in one place.
+
+Built for students preparing for **GATE 2027**, learning Python and DSA, working on projects, and building consistent study habits.
+
+✨ **Live Website:** [MahiOS](https://mahi-final-ten.vercel.app)
+
+---
+
+## 📌 Table of Contents
+
+* [Features](#-features)
+* [Tech Stack](#-tech-stack)
+* [Getting Started](#-getting-started)
+* [Environment Variables](#-environment-variables)
+* [Deployment](#-deployment)
+* [Integrations](#-integrations)
+* [Chrome Extension](#-chrome-extension)
+* [Data Storage & Privacy](#-data-storage--privacy)
+* [Project Structure](#-project-structure)
+* [Limitations](#-limitations)
+
+---
+
+## ✨ Features
+
+### 📚 Learning Dashboard
+
+* Track GATE 2027, Python, and DSA learning progress.
+* Mark topics as completed and maintain revision progress.
+* View learning statistics and progress analytics.
+* Enjoy a light, pastel-themed interface with anime-inspired study companions.
+
+### ✅ Task & Project Management
+
+* Create, complete, filter, and delete study tasks.
+* Create and manage projects with descriptions, technology stacks, and status updates.
+* Keep your academic and personal projects organized in one place.
+
+### ⏱️ Focus & Productivity
+
+* Built-in Pomodoro timer for focused study sessions.
+* Track focus sessions and review productivity analytics.
+* Focus Lock adds confirmation prompts when switching pages and restricts timer resets while locked.
+* Receive motivational messages when completing tasks, topics, and focus sessions.
+
+### 🤖 Gemini-Powered Study Assistant
+
+* Get study-focused assistance through the integrated AI chat.
+* Uses a server-side API route to communicate with Gemini.
+* Includes an API status diagnostic to check whether required environment variables are configured.
+
+### 🎥 YouTube Learning Integration
+
+* Import YouTube playlists into your learning dashboard.
+* Automatically categorize lessons into GATE, DSA, Python, or Other.
+* Manually change playlist categories and filter lessons.
+* Track lesson completion and progress separately for each category.
+* Watch lessons inside the app and automatically mark them complete when playback ends.
+
+### 💻 LeetCode Integration
+
+* View publicly available LeetCode profile statistics.
+* Prefilled profile: `MahiVTech`.
+* Stats may be unavailable due to third-party service limitations or rate limits.
+
+### 🌷 Study Mentor
+
+* An anime-inspired mentor stays accessible throughout the app.
+* Get motivational messages when you complete learning goals.
+* Optional voice feedback using the browser's built-in SpeechSynthesis.
+* English motivational subtitles and spoken encouragement.
+
+### 🧩 Chrome New Tab Extension
+
+* A Chrome extension that brings the MahiOS learning experience to your new tab.
+* Load the extension locally using Chrome's Developer mode.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology        | Purpose                               |
+| ----------------- | ------------------------------------- |
+| React             | User interface                        |
+| Vite              | Development server and build tool     |
+| JavaScript        | Application logic                     |
+| CSS               | Responsive styling and UI design      |
+| Vercel            | Hosting and serverless API functions  |
+| Gemini API        | AI study assistant                    |
+| YouTube Data API  | Playlist integration                  |
+| Local Storage     | Browser-side progress and preferences |
+| Chrome Extensions | New Tab experience                    |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+* [Node.js](https://nodejs.org/)
+* npm (included with Node.js)
+* Git (optional, for cloning the repository)
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/MahiVTech/PrepOS-Extension.git
+cd PrepOS-Extension
+```
+
+### 2. Install dependencies
+
 ```bash
 npm install
+```
+
+### 3. Start the development server
+
+```bash
 npm run dev
 ```
 
-The Vite preview serves the frontend. The `/api/*` functions are Vercel serverless functions, so AI and YouTube API routes are available after deploying to Vercel (or using Vercel's local development CLI).
+Open the local URL displayed in your terminal to access the application.
 
-## Build
+> **Note:** The frontend runs through Vite. The `/api/*` endpoints are Vercel serverless functions and require Vercel deployment or a compatible local development environment.
+
+---
+
+## 🔐 Environment Variables
+
+MahiOS uses server-side environment variables for its AI assistant and YouTube playlist integration.
+
+Create a `.env.local` file in the project root for local configuration:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key
+YOUTUBE_API_KEY=your_youtube_api_key
+```
+
+### Required API Keys
+
+| Variable          | Purpose                            |
+| ----------------- | ---------------------------------- |
+| `GEMINI_API_KEY`  | Powers the Gemini study assistant  |
+| `YOUTUBE_API_KEY` | Enables YouTube playlist importing |
+
+**Security Guidelines**
+
+* Never commit `.env.local` or real API keys to GitHub.
+* Never expose API keys in frontend code.
+* Use restricted API keys and configure appropriate usage limits.
+* Keep `.env.example` limited to placeholder values.
+
+---
+
+## 🏗️ Build & Preview
+
+Create a production build:
+
 ```bash
 npm run build
+```
+
+Preview the production build locally:
+
+```bash
 npm run preview
 ```
 
-## Deploy to Vercel
-1. Push this folder to a GitHub repository.
-2. Import it in Vercel.
-3. Build command: `npm run build`; output directory: `dist`.
-4. In **Project Settings → Environment Variables**, add `GEMINI_API_KEY` and `YOUTUBE_API_KEY` using newly rotated, restricted keys. Never add secrets to frontend code or commit them to Git.
-5. Redeploy after adding environment variables.
+The generated frontend build is available in the `dist/` directory.
 
-## Features
-- Cute anime study companions with a clickable rotating motivation message on the overview dashboard.
-- Light-first responsive dashboard with a soft illustrated moodboard backdrop across pages, framed mentor portrait artwork, glassy pastel cards, and a cozy anime study-buddy scene with rotating encouragement messages.
-- GATE, Python, and DSA topic trackers with local persistence.
-- Task manager: add, complete, filter, and delete tasks.
-- Project studio: create, edit, update status/stack, and delete projects.
-- Pomodoro timer and focus-session analytics.
-- Revision and progress analytics.
-- LeetCode profile lookup prefilled for `MahiVTech` (public stats endpoint; unofficial and may be rate-limited).
-- YouTube playlist import through a server-side API proxy, automatic title-based grouping into GATE / DSA / Python / Other, manual category override, separate per-path completion cards, filters, and local watch-progress tracking while a video plays inside the app.
-- Gemini-powered AI assistant through a server-side API route, with a live `/api/status` diagnostic that reports whether required keys are configured without exposing them.
-- Chrome New Tab extension in `extension/`.
+---
 
-## Integrations
+## ☁️ Deployment
 
-### LeetCode
-The Integrations page is prefilled with `MahiVTech` and attempts to load public profile statistics. The stats endpoint is community-maintained and unofficial; it can be unavailable or rate-limited. No LeetCode login or private account data is accessed.
+MahiOS is designed to be deployed on [Vercel](https://vercel.com/).
 
-### YouTube
-The playlist URL is prefilled. In Integrations, select Auto-detect to classify lessons by title keywords or explicitly assign the playlist to GATE, DSA, Python, or Other. Progress is shown separately for each category and can be filtered. You can import another playlist under a different category; previously imported videos and completion marks are retained. Add `YOUTUBE_API_KEY` as a Vercel environment variable to import playlist videos. The key is used only in the server-side `/api/youtube` function. YouTube's public Data API does **not** expose personal watch history, so MahiOS cannot automatically detect videos watched in a separate YouTube tab. Open a playlist lesson in the embedded MahiOS player to have it marked complete automatically when playback ends; manual completion is also available.
+### Deploy using Vercel
+
+1. Push the project to a GitHub repository.
+
+2. Import the repository into Vercel.
+
+3. Configure the project settings:
+
+   * **Framework:** Vite
+   * **Build Command:** `npm run build`
+   * **Output Directory:** `dist`
+
+4. Open **Project Settings → Environment Variables**.
+
+5. Add `GEMINI_API_KEY` and `YOUTUBE_API_KEY`.
+
+6. Redeploy the project.
+
+After deployment, the frontend and serverless API functions will be available through your Vercel deployment.
+
+---
+
+## 🔌 Integrations
 
 ### Gemini AI
-The assistant calls `/api/chat`, a server-side function that uses `GEMINI_API_KEY`. Add the key in Vercel environment variables and redeploy. The key is not stored in browser storage or shipped in frontend code. The API route uses Gemini Flash and provides a study-focused system instruction.
 
-### Data storage
-Tasks, projects, topic completion, focus sessions, LeetCode stats, and playlist checkmarks are stored in this browser's local storage. There is no account system or cloud sync across devices yet.
+The AI assistant communicates with Gemini through the server-side `/api/chat` function.
 
-## Chrome extension
-1. Extract the ZIP.
-2. Open `chrome://extensions` and enable Developer mode.
-3. Click **Load unpacked** and choose the `extension/` folder.
-4. Open a new tab.
+* Uses `GEMINI_API_KEY`.
+* Keeps the API key on the server.
+* Uses the Gemini Interactions API.
+* Provides study-focused responses through a dedicated system instruction.
 
-## Environment variable names
-See `.env.example` for placeholders only. Never put actual keys in that file.
+### YouTube
 
-## Study Mentor (new)
-- A single anime-style mentor card stays available across the app; it reacts with praise when a task or learning topic is marked complete and celebrates a finished focus session.
-- **Voice toggle:** uses the browser's built-in SpeechSynthesis voice, with English text, a lower pitch, slower delivery, and phonetic pronunciation of Mahi as “Mah-ee”. The exact voice/timbre depends on voices installed in the browser/OS; a truly custom deep male voice would require a licensed audio/TTS service.
-- **Focus Lock:** while a timer is running, switching pages while lock is enabled asks for confirmation; resetting is disabled until unlocked, and leaving/reloading the browser tab triggers its standard warning. Browsers do not allow a website to absolutely prevent someone from closing a tab or browser.
-- Focus timer completion, task completion, and topic completion produce English motivational subtitles; audio plays when voice is enabled.
+The YouTube integration uses the server-side `/api/youtube` function.
 
+**Supported features:**
 
-### Gemini model update
-The chat endpoint uses Gemini 3.8 Flash through the Interactions API (`/v1beta/interactions`). Set `GEMINI_API_KEY` in Vercel Project Settings → Environment Variables and redeploy. API keys must remain server-side.
+* Import public playlists.
+* Automatically categorize lessons using title keywords.
+* Assign playlists to GATE, DSA, Python, or Other.
+* Track progress and completion within MahiOS.
+
+YouTube's public Data API does not provide personal watch history. Therefore, videos watched in a separate YouTube tab cannot automatically be marked as completed.
+
+### LeetCode
+
+The Integrations page uses the public profile `MahiVTech` to attempt to retrieve statistics.
+
+The stats endpoint is unofficial and community-maintained. Availability and accuracy depend on the external service.
+
+---
+
+## 🧩 Chrome Extension
+
+MahiOS includes a Chrome New Tab extension.
+
+### Installation
+
+1. Extract the extension ZIP file.
+2. Open `chrome://extensions` in Chrome.
+3. Enable **Developer mode**.
+4. Click **Load unpacked**.
+5. Select the project's `extension/` folder.
+6. Open a new tab to access the extension.
+
+---
+
+## 💾 Data Storage & Privacy
+
+MahiOS currently uses browser Local Storage for:
+
+* Tasks and projects
+* Topic completion and learning progress
+* Focus-session records
+* LeetCode statistics
+* YouTube playlist progress and completion marks
+
+### Important
+
+* Data is stored locally in the browser.
+* There is currently no account system or cloud synchronization across devices.
+* Clearing browser data may remove locally stored progress.
+* API keys are intended to remain on the server and should never be exposed in frontend code.
+
+---
+
+## ⚠️ Limitations
+
+* No account system or cross-device cloud synchronization.
+* LeetCode statistics depend on an unofficial external endpoint.
+* YouTube watch history from outside MahiOS cannot be automatically detected.
+* Speech quality depends on the voices available in the browser and operating system.
+* Focus Lock cannot prevent users from closing the browser or forcibly leaving a page.
+
+---
+
+## 📂 Project Structure
+
+```text
+PrepOS-Extension/
+├── api/
+│   ├── chat.js
+│   ├── status.js
+│   └── youtube.js
+├── extension/
+│   ├── manifest.json
+│   ├── newtab.html
+│   ├── newtab.css
+│   ├── newtab.js
+│   └── icons/
+├── public/
+├── src/
+├── tests/
+├── .env.example
+├── .gitignore
+├── index.html
+├── package.json
+├── vercel.json
+└── README.md
+```
+
+*The structure above is a simplified overview of the project.*
+
+---
+
+## 🌱 Future Improvements
+
+* User authentication and cloud synchronization.
+* Cross-device learning progress.
+* Enhanced study analytics and personalized recommendations.
+* More AI-powered learning and revision tools.
+* Additional integrations for academic productivity.
+
+---
+
+## 💖 Made for Learners
+
+MahiOS is built around one simple idea:
+
+**Make learning organized, consistent, and enjoyable.**
+
+Study smarter. Stay focused. Keep growing. 🌷
+
+---
+
+<p align="center">
+  <b>MahiOS — Your Learning. Your Progress. Your Space.</b>
+</p>
