@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "MahiOS \u2014 Your Learning Space",
+  "version": "1.1.0",
+  "description": "Open your full MahiOS learning dashboard in a new tab.",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
